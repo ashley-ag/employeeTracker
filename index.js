@@ -8,9 +8,9 @@ const connection = mysql.createConnection({
   // Your port; if not 3306
   port: 3306,
   // Your username
-  user: "root",
+  user: "",
   // Your password
-  password: "password1",
+  password: "",
   database: "employee_tracker_db",
 });
 
@@ -124,25 +124,24 @@ const addRoles = () => {
 const addEmployees = () => {
   connection.query("SELECT * FROM role", (err, results) => {
     if (err) throw err;
-    console.table(results);
-  })
+    console.table(results); 
   inquirer
     .prompt(
       {
         type: "input",
         name: "employeeFirstName",
-        message: "What is the first name of your employee?",
+        message: "What is the first name of your employee?"
       },
       {
         type: "input",
         name: "employeeLastName",
-        message: "What is the last name of your employee?",
+        message: "What is the last name of your employee?"
       },
       {
         type: "input",
         name: "roleID",
         message:
-          "From the table above, what is the ID of the role of your employee?",
+          "From the table above, what is the ID of the role of your employee?"
       }
     )
     .then((response) => {
@@ -151,10 +150,10 @@ const addEmployees = () => {
         (err) => {
           if (err) throw err;
           viewEmployees();
-          showMenu();
         }
       );
     });
+})
 };
 
 // View departments, roles, employees

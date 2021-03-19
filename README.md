@@ -17,10 +17,10 @@ To install this application:
 </ol>
 
 # What you should see when you run the application
-
+![screenshot](./assets/screenshotmenu.png)
 
 # Important Links
 <ul>
-<li>Github repo:  </li>
-<li>Walkthrough video:  </li>
+<li>Github repo: https://github.com/ashley-ag/employeeTracker </li>
+<li>Walkthrough video: https://drive.google.com/file/d/11lYp0y-klbIF_Jo_dKCIQPCcg_4fIEL4/view </li>
 </ul>
