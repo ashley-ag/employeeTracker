@@ -8,9 +8,9 @@ const connection = mysql.createConnection({
   // Your port; if not 3306
   port: 3306,
   // Your username
-  user: "",
+  user: "root",
   // Your password
-  password: "",
+  password: "password1",
   database: "employee_tracker_db",
 });
 
@@ -125,7 +125,7 @@ const addEmployees = () => {
   connection.query("SELECT * FROM role", (err, results) => {
     if (err) throw err;
     console.table(results);
-  });
+  })
   inquirer
     .prompt(
       {
@@ -189,8 +189,8 @@ const updateEmployee = () => {
     console.table(results);
     inquirer
       .prompt({
-        type: "input",
-        name: "employeeID",
+        type: "number",
+        name: "employeeId",
         message: "What is the ID of the employee you would like to update?",
       })
       .then((response) => {
@@ -202,15 +202,16 @@ const updateEmployee = () => {
             .prompt(
               // Ask which role ID to use
               {
-                type: "input",
-                name: "roleID",
+                type: "number",
+                name: "roleId",
                 message: "What is the ID of the role you would like to use?",
               }
             )
             .then((answer) => {
-              connection.query(`UPDATE employee SET (role_id) = (${answer.roleID}) WHERE (id) = (${response.employee})`, (err, res) => {
+              connection.query(`UPDATE employee SET role_id = ${answer.roleId} WHERE id = ${response.employeeId}`, (err, res) => {
                 if (err) throw err;
-                viewEmployees();
+                console.table(res);
+                showMenu();
             });
         });
       });
